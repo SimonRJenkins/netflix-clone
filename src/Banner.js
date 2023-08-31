@@ -9,7 +9,7 @@ function Banner() {
 
     useEffect(() => {
 async function fetchData() {
-    const request = await axios.get(requests.fetchTopRated);
+    const request = await axios.get(requests.fetchTrending);
     setMovie(
         request.data.results[
             Math.floor(Math.random() * request.data.results.length - 1)
@@ -19,8 +19,6 @@ async function fetchData() {
 }
 fetchData();
     }, []);
-
-    console.log(movie)
 
 function truncate(string, n) {
     return string?.length > n ? string.substr(0, n - 1) + '...' : string;
@@ -43,10 +41,10 @@ function truncate(string, n) {
                 {truncate(movie?.overview, 150)}
             </h1>
         </div>
+        
 <div className="banner--fadeBottom" />
-
     </header>
-  )
+  );
 }
 
 export default Banner
