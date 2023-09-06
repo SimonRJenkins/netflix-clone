@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import HomeScreen from "./screens/HomeScreen";
 import {
@@ -7,9 +7,22 @@ import {
   BrowserRouter
 } from "react-router-dom"
 import LoginScreen from "./screens/LoginScreen";
+import { auth } from "./firebase.js";
 
 function App() {
   const user = null;
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(userAuth => {
+      if (userAuth) {
+        console.log(userAuth)
+      } else {
+
+      }
+    });
+
+    return unsubscribe;
+  }, []);
 
   return (
     <div className="app">
