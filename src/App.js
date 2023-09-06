@@ -6,20 +6,29 @@ import {
   Route,
   BrowserRouter
 } from "react-router-dom"
+import LoginScreen from "./screens/LoginScreen";
 
 function App() {
+  const user = null;
+
   return (
     <div className="app">
 
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<HomeScreen />} />
-          <Route path="/test" />
-        </Routes>
+        {!user ? (
+          <LoginScreen />
+        ) : (
+          <Routes>
+
+            <Route exact path="/" element={<HomeScreen />} />
+            <Route path="/test" />
+          </Routes>
+        )}
       </BrowserRouter>
     </div>
-  );
+  )
 }
+
 
 
 export default App;
